@@ -7,45 +7,16 @@
 @endsection
 
 @section('content')
-    <style>
-        .rescal {
-            padding: 10px 0;
-        }
-        .rescal td, .rescal th {
-            width: 200px;
-            border-right: 1px solid #eee;
-            border-bottom: 1px solid #eee;
-            position: relative;
-            text-align: center;
-        }
-
-        .Pending {
-            background-color: #f0ad4e;
-        }
-        .Cancelled {
-            background-color: #f0f0f0;
-        }
-        .Claimed {
-            background-color: #c1e2b3;
-        }
-        .reserve {
-            cursor: pointer;
-            position:relative;
-            margin-top: 2px;
-            border-radius: 8px;
-            border: 1px solid #333;
-        }
-    </style>
     <div class="well well-sm">
     <form class="form-inline" method="get">
         <div class="form-group">
             <label for="startdate">Arrival</label>
-            <input type="date" class="form-control" id="startdate" name="startdate" value="{{old('startdate')}}">
+            <input type="date" class="form-control" id="startdate" name="startdate" value="{{$startdate}}">
         </div>
 
         <div class="form-group">
             <label for="enddate">Departure</label>
-            <input type="date" class="form-control" id="enddate" name="enddate" value="{{old('enddate')}}">
+            <input type="date" class="form-control" id="enddate" name="enddate" value="{{$enddate}}">
         </div>
 
         <div class="form-group">
@@ -64,12 +35,25 @@
     </form>
     </div>
 
-    <div class="panel">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="btn-group" data-toggle="buttons">
+                <label class="btn btn-default Pending" data-status="Pending">
+                    <input type="checkbox" autocomplete="off"> Pending
+                </label>
+                <label class="btn btn-default Claimed" data-status="Claimed">
+                    <input type="checkbox" autocomplete="off"> Claimed
+                </label>
+                <label class="btn btn-default Cancelled" data-status="Cancelled">
+                    <input type="checkbox" autocomplete="off"> Cancelled
+                </label>
+            </div>
+        </div>
         <div class="panel-body">
             <table class="rescal">
                 <thead>
                     <tr>
-                        <th class="rm-col-hdr">Room No.</th>
+                        <th class="rm-col-hdr">Room</th>
                         @foreach($dates as $day)
                             <th>{!!  str_replace(' ', '<br>', $day) !!}</th>
                         @endforeach
@@ -78,15 +62,19 @@
                 <tbody>
                     @foreach($calendar as $door => $cal)
                         <tr>
-                            <td class="rm-col-cell">{{ $door }}</td>
+                            <th class="rm-col-cell">{{ $door }}</th>
                             @foreach($cal as $day => $reservation)
                                 <td>
                                     @foreach($reservation as $rr)
                                         <div class="reserve {{$rr->status}} {{$rr->startmodifier}} {{$rr->endmodifier}}"
                                              data-rrid="{{$rr->rr_id}}"
-                                             @if($rr->computedlength > 0) style="width:{{ 100 * (int) $rr->computedlength }}%" @endif
+                                             @if($rr->computedlength > 0 && $rr->startmodifier == 'extendleft' && $rr->endmodifier == 'extendright') style="width:{{ 100 * ((int) $rr->computedlength + 1) }}%"
+                                             @elseif($rr->computedlength > 0 && $rr->startmodifier == '' && $rr->endmodifier == 'extendright') style="width:{{ 100 * ((int) $rr->computedlength + 0.5) }}%"
+                                             @elseif($rr->computedlength > 0 && $rr->startmodifier == 'extendleft' && $rr->endmodifier == '') style="width:{{ 100 * ((int) $rr->computedlength + 0.5) }}%"
+                                             @elseif($rr->computedlength > 0 && $rr->startmodifier == '' && $rr->endmodifier == '') style="width:{{ 100 * ((int) $rr->computedlength + 0) }}%"
+                                                @endif
                                                 >
-                                            {{$rr->rr_id}}
+                                            <span class="reserve_link">{{$rr->rr_id}}</span>
                                         </div>
                                     @endforeach
                                 </td>
@@ -141,6 +129,11 @@
                     $('#myModal').modal('show');
                 });
             });
+            $('label.btn').on('click', function(e){
+                e.preventDefault();
+                var status = $(this).data('status');
+                $('.reserve.' + status).toggle();
+            })
         });
     </script>
 @endsection

@@ -16,6 +16,7 @@
 
     <!-- Custom styles for this template -->
     <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/reservation.css') }}" rel="stylesheet">
     <script src="{{ asset('js/jquery2.js') }}"></script>
 </head>
 

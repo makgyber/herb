@@ -23,9 +23,9 @@ class ReservationController extends Controller
         $firstRoomType = $roomTypes->last();
 
         $now = new \DateTime('now');
-        $startdate = '2015-11-25'; //$request->get('startdate', $now->format('Y-m-d'));
-        $enddate = '2015-11-30';//$request->get('enddate', $now->add(new \DateInterval('P10D'))->format('Y-m-d'));
-        $room_type_id = 12;//$request->get('room_type_id', $firstRoomType->room_type_id);
+        $startdate = $request->get('startdate', $now->format('Y-m-d'));
+        $enddate = $request->get('enddate', $now->add(new \DateInterval('P10D'))->format('Y-m-d'));
+        $room_type_id = $request->get('room_type_id', $firstRoomType->room_type_id);
 
         $calendar = $reserveRoomRepo->findReserveRoomsByRangeAndRoomType($startdate, $enddate, $room_type_id);
 
@@ -33,7 +33,7 @@ class ReservationController extends Controller
 
         $request->flash();
 
-        return view('reservations.index', compact('calendar', 'roomTypes', 'dates'));
+        return view('reservations.index', compact('calendar', 'roomTypes', 'dates', 'startdate', 'enddate'));
     }
 
     /**

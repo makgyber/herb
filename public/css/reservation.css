@@ -1,0 +1,69 @@
+.rescal {
+    padding: 10px 0;
+}
+
+.rescal td, .rescal th {
+    width: 100px;
+    border-right: 1px dotted #eee;
+    border-bottom: 1px dotted #eee;
+    position: static;
+    min-height: 40px;
+    font-size: 10px;
+}
+
+.rescal th {
+    text-align: center;
+}
+
+.Pending {
+    background-color: #faf2cc;
+    color: #3c3c3c;
+}
+.Cancelled {
+    background-color: #f2dede;
+    color: #3c3c3c;
+}
+.Claimed {
+    background-color: #c1e2b3;
+    color: #3c3c3c;
+}
+.reserve {
+    cursor: pointer;
+    position:relative;
+    margin: 2px 0;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    padding: 2px;
+    left: 50%;
+}
+.reserve:hover {
+    z-index:100;
+}
+.reserve.extendleft {
+    -webkit-border-top-right-radius: 8px;
+    -webkit-border-bottom-right-radius: 8px;
+    -moz-border-radius-topright: 8px;
+    -moz-border-radius-bottomright: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    left:0;
+}
+
+.reserve.extendright {
+    -webkit-border-top-left-radius: 8px;
+    -webkit-border-bottom-left-radius: 8px;
+    -moz-border-radius-topleft: 8px;
+    -moz-border-radius-bottomleft: 8px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.reserve.extendleft.extendright {
+    left: 0;
+    border-radius: 0;
+}
