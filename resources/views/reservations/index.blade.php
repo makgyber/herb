@@ -49,7 +49,7 @@
                 </label>
             </div>
         </div>
-        <div class="panel-body">
+        <div class="panel-body" style="overflow: auto">
             <table class="rescal">
                 <thead>
                     <tr>
@@ -59,12 +59,16 @@
                         @endforeach
                     </tr>
                 </thead>
-                <tbody>
+
                     @foreach($calendar as $door => $cal)
+                    <tbody>
                         <tr>
-                            <th class="rm-col-cell">{{ $door }}</th>
+                            <th class="rm-col-cell" rowspan="2">{{ $door }}</th>
                             @foreach($cal as $day => $reservation)
                                 <td>
+                                    <div class="btn btn-block btn-default">
+                                        <span class="glyphicon glyphicon-bed"></span>
+                                    </div>
                                     @foreach($reservation as $rr)
                                         <div class="reserve {{$rr->status}} {{$rr->startmodifier}} {{$rr->endmodifier}}"
                                              data-rrid="{{$rr->rr_id}}"
@@ -74,14 +78,15 @@
                                              @elseif($rr->computedlength > 0 && $rr->startmodifier == '' && $rr->endmodifier == '') style="width:{{ 100 * ((int) $rr->computedlength + 0) }}%"
                                                 @endif
                                                 >
-                                            <span class="reserve_link">{{$rr->rr_id}}</span>
+                                            {{$rr->rr_id}}
                                         </div>
                                     @endforeach
                                 </td>
                             @endforeach
                         </tr>
+                    </tbody>
                     @endforeach
-                </tbody>
+
             </table>
         </div>
     </div>

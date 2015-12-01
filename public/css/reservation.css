@@ -3,16 +3,20 @@
 }
 
 .rescal td, .rescal th {
-    width: 100px;
-    border-right: 1px dotted #eee;
-    border-bottom: 1px dotted #eee;
-    position: static;
+    border-bottom: 2px solid #fff;
     min-height: 40px;
     font-size: 10px;
+    vertical-align: top;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    min-width: 48px;
 }
 
 .rescal th {
     text-align: center;
+    vertical-align: middle;
+    background-color: #31708f;
+    color: #fff;
 }
 
 .Pending {
@@ -37,10 +41,13 @@
     border: 1px solid #ccc;
     padding: 2px;
     left: 50%;
+
 }
+
 .reserve:hover {
     z-index:100;
 }
+
 .reserve.extendleft {
     -webkit-border-top-right-radius: 8px;
     -webkit-border-bottom-right-radius: 8px;
@@ -63,7 +70,12 @@
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 }
+
 .reserve.extendleft.extendright {
     left: 0;
     border-radius: 0;
+}
+
+.rm-col-hdr {
+    width: 60px;
 }
