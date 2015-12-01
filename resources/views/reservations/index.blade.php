@@ -8,49 +8,33 @@
 
 @section('content')
     <style>
-        .calendar th {
-            background-color: #cccccc;
+        .rescal {
+            padding: 10px 0;
+        }
+        .rescal td, .rescal th {
+            width: 200px;
+            border-right: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            position: relative;
             text-align: center;
         }
-        .calendar td {
-            vertical-align: top;
-            position:relative;
-            padding: 4px 0;
-        }
-        .calendar td div {
-            font-size: 10px;
-            padding: 3px;
-            width: 100%;
-            margin-top: 2px;
-        }
-        .i {
-            width: 50%;
-            -webkit-border-top-left-radius: 6px;
-            -webkit-border-bottom-left-radius: 6px;
-            -moz-border-radius-topleft: 6px;
-            -moz-border-radius-bottomleft: 6px;
-            border-top-left-radius: 6px;
-            border-bottom-left-radius: 6px;
-            margin-left: 50%;
-        }
-        .o {
-            width: 50%;
-            margin-right: 50%;
-            -webkit-border-top-right-radius: 6px;
-            -webkit-border-bottom-right-radius: 6px;
-            -moz-border-radius-topright: 6px;
-            -moz-border-radius-bottomright: 6px;
-            border-top-right-radius: 6px;
-            border-bottom-right-radius: 6px;
-        }
-        .Pending {background-color: #f2dede}
-        .Cancelled {background-color: #ffdd88}
-        .Claimed {background-color: #3c763d}
 
+        .Pending {
+            background-color: #f0ad4e;
+        }
+        .Cancelled {
+            background-color: #f0f0f0;
+        }
+        .Claimed {
+            background-color: #c1e2b3;
+        }
         .reserve {
             cursor: pointer;
+            position:relative;
+            margin-top: 2px;
+            border-radius: 8px;
+            border: 1px solid #333;
         }
-
     </style>
     <div class="well well-sm">
     <form class="form-inline" method="get">
@@ -82,24 +66,27 @@
 
     <div class="panel">
         <div class="panel-body">
-            <table class="table-bordered calendar">
+            <table class="rescal">
                 <thead>
                     <tr>
-                        <th>Room No.</th>
+                        <th class="rm-col-hdr">Room No.</th>
                         @foreach($dates as $day)
-                            <th colspan="1">{!!  str_replace(' ', '<br>', $day) !!}</th>
+                            <th>{!!  str_replace(' ', '<br>', $day) !!}</th>
                         @endforeach
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($calendar as $door => $cal)
                         <tr>
-                            <td>{{ $door }}</td>
+                            <td class="rm-col-cell">{{ $door }}</td>
                             @foreach($cal as $day => $reservation)
                                 <td>
                                     @foreach($reservation as $rr)
-                                        <div class="reserve {{$rr->status}} {{$rr->modifier}}" data-rrid="{{$rr->reserve_room_id}}">
-                                            {{$rr->reserve_room_id}}
+                                        <div class="reserve {{$rr->status}} {{$rr->startmodifier}} {{$rr->endmodifier}}"
+                                             data-rrid="{{$rr->rr_id}}"
+                                             @if($rr->computedlength > 0) style="width:{{ 100 * (int) $rr->computedlength }}%" @endif
+                                                >
+                                            {{$rr->rr_id}}
                                         </div>
                                     @endforeach
                                 </td>
@@ -111,6 +98,7 @@
         </div>
     </div>
 
+
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
@@ -121,6 +109,7 @@
                 </div>
                 <div class="modal-body">
                     <table class="table table-bordered">
+                        <tr><th>#</th><td id="rrid"></td></tr>
                         <tr><th>Check In</th><td id="checkin"></td></tr>
                         <tr><th>Check Out</th><td id="checkout"></td></tr>
                         <tr><th>Deposit</th><td id="deposit"></td></tr>
@@ -148,6 +137,7 @@
                     $('#checkout').html(resp.checkout);
                     $('#deposit').html(resp.deposit);
                     $('#status').html(resp.status);
+                    $('#rrid').html(resp.rr_id);
                     $('#myModal').modal('show');
                 });
             });

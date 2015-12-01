@@ -1,5 +1,6 @@
 <?php namespace App\Libraries\Repositories;
 
+use App\Models\Calendar;
 use App\Models\ReservedRoomDate;
 use App\Models\Room;
 use Bosnadev\Repositories\Eloquent\Repository;
@@ -67,19 +68,22 @@ class ReservedRoomDateRepository extends Repository
 
     public function findReservationsForRoomTypeInRange($start, $end, $room_type_id)
     {
-        $dstart = new \DateTime($start);
-        $interval = $dstart->diff(new \DateTime($end))->format('%a');
+//        $dstart = new \DateTime($start);
+//        $interval = $dstart->diff(new \DateTime($end))->format('%a');
+//
+//        $output = [];
+//        for( $ctr = 0; $ctr <= $interval; $ctr++) {
+//            $caldate = $dstart->format('Y-m-d');
+//            $output[$caldate] = $this->findAllBy('cal_date', $caldate, ['reserve_room_id', 'room_id', 'status', 'modifier']);
+//            $dstart->add(new \DateInterval('P1D'));
+//        }
+//
+//        $rooms = Room::where('room_type_id', $room_type_id)->get();
+//
+//        return $this->pivotRoomsByDates($rooms, $output);
 
-        $output = [];
-        for( $ctr = 0; $ctr <= $interval; $ctr++) {
-            $caldate = $dstart->format('Y-m-d');
-            $output[$caldate] = $this->findAllBy('cal_date', $caldate, ['reserve_room_id', 'room_id', 'status', 'modifier']);
-            $dstart->add(new \DateInterval('P1D'));
-        }
+        $dates = Calendar::getInclusiveDates($start, $end);
 
-        $rooms = Room::where('room_type_id', $room_type_id)->get();
-
-        return $this->pivotRoomsByDates($rooms, $output);
     }
 
     protected function pivotRoomsByDates($rooms, $dates)
