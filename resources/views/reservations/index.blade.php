@@ -1,8 +1,8 @@
 @extends('app')
 @section('sidebar')
     <ul class="nav nav-sidebar">
-        <li class="active"><a href="#">New</a></li>
-        <li><a href="#">Reports</a></li>
+        <li class="active"><a href="{{ url('reservations') }}">Dashboard</a></li>
+        <li><a href="{{ url('reservations') }}">Reports</a></li>
     </ul>
 @endsection
 
@@ -37,14 +37,14 @@
 
     <div class="panel panel-default">
         <div class="panel-heading">
-            <div class="btn-group" data-toggle="buttons">
-                <label class="btn btn-default Pending" data-status="Pending">
+            <div class="btn-group" data-toggle="buttons" >
+                <label class="btn btn-default Pending" data-status="Pending" title="Click to hide/show all Pending reservations">
                     <input type="checkbox" autocomplete="off"> Pending
                 </label>
-                <label class="btn btn-default Claimed" data-status="Claimed">
+                <label class="btn btn-default Claimed" data-status="Claimed" title="Click to hide/show all Claimed reservations">
                     <input type="checkbox" autocomplete="off"> Claimed
                 </label>
-                <label class="btn btn-default Cancelled" data-status="Cancelled">
+                <label class="btn btn-default Cancelled" data-status="Cancelled" title="Click to hide/show all Cancelled reservations">
                     <input type="checkbox" autocomplete="off"> Cancelled
                 </label>
             </div>
@@ -66,7 +66,9 @@
                             <th class="rm-col-cell" rowspan="2">{{ $door }}</th>
                             @foreach($cal as $day => $reservation)
                                 <td>
-                                    <div class="btn btn-block btn-default">
+                                    <div class="btn btn-block btn-default reserve-btn"
+                                        data-door="{{ $door }}" data-day="{{ $day }}"
+                                    >
                                         <span class="glyphicon glyphicon-bed"></span>
                                     </div>
                                     @foreach($reservation as $rr)
@@ -138,7 +140,12 @@
                 e.preventDefault();
                 var status = $(this).data('status');
                 $('.reserve.' + status).toggle();
-            })
+            });
+            $('.reserve-btn').on('click', function(e){
+                e.preventDefault();
+                var door = $(this).data('door'), day = $(this).data('day');
+                document.location.href='{{ url('reservations/new') }}/' + door + '/' + day;
+            });
         });
     </script>
 @endsection

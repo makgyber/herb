@@ -41,9 +41,9 @@ class ReservationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($door, $day)
     {
-        //
+        return view('reservations.create', compact('door'));
     }
 
     /**

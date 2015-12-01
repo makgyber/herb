@@ -61,7 +61,8 @@ Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function ()
 Route::group(['prefix' => 'reservations', 'namespace' => 'Reservations', 'middleware' => ['auth']], function(){
 
 	Route::get('/', 'ReservationController@index');
-	Route::post('create', 'ReservationController@create');
+	Route::get('/new/{door}/{day}', 'ReservationController@create');
+	Route::post('create', 'ReservationController@store');
 
 });
 
