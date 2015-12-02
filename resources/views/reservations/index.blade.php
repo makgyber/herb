@@ -40,22 +40,49 @@
             $( ".rescal tr" ).selectable({
                 filter: '.reserve-btn',
                 stop: function() {
-                    var door = {}, days = [];
-                    $( ".ui-selected", this ).each(function() {
-                        door = $(this).data('door');
-                        days.push($(this).data('day'));
-                    });
-                    rrooms[door] = days;
-                    console.log(rrooms);
+                    if ($( ".ui-selected", this).length > 0) {
+                        var door = {}, days = [];
+                        $( ".ui-selected", this ).each(function() {
+                            door = $(this).data('door');
+                            days.push($(this).data('day'));
+                        });
+                        rrooms[door] = days;
+                    }
+                    buildRoomList();
                 },
                 unselected: function(event, ui) {
                     var door = $(ui.unselected).data('door');
                     if (rrooms[door] !== undefined) {
                         delete rrooms[door];
                     }
-                    console.log(rrooms);
                 }
             });
+
+
+            function buildRoomList() {
+                var rrlist = $('#rroomlist').empty();
+                var ctr = 1;
+                $.each(rrooms, function(x, y){
+                    if (x !== undefined) {
+                        rrlist.append('<tr><td>' + ctr + '</td><td>' + x + '</td><td>' + y[0] + '</td><td>' + y[y.length - 1] + '</td><td></tr>');
+                        ctr++;
+                    }
+                });
+            }
+
+
+
         });
+        function SelectSelectableElement(selectableContainer, elementsToSelect) {
+            // add unselecting class to all elements in the styleboard canvas except the ones to select
+            $(".ui-selected", selectableContainer).not(elementsToSelect).removeClass("ui-selected").addClass("ui-unselecting");
+
+            // add ui-selecting class to the elements to select
+            $(elementsToSelect).not(".ui-selected").addClass("ui-selecting");
+
+            // trigger the mouse stop event (this will select all .ui-selecting elements, and deselect all .ui-unselecting elements)
+            selectableContainer.data('ui-selectable')._mouseStop(null);
+            $('.rescal tr').trigger('selectablestart');
+        }
     </script>
 @endsection

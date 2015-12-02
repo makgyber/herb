@@ -20,11 +20,14 @@
                         Reserved Rooms
                         <button class="btn btn-xs pull-right"><span class="glyphicon glyphicon-trash"></span></button>
                     </div>
-                    <div class="panel-body">
-                        <ul class="list-group" id="">
-
-                        </ul>
-                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr><th>#</th><th>Room</th><th>In</th><th>Out</th></tr>
+                        </thead>
+                        <tbody id="rroomlist">
+                        <tr><td colspan="3">Select rooms to add</td></tr>
+                        </tbody>
+                    </table>
                 </div>
                 <div class="panel panel-info">
                     <div class="panel-heading">
