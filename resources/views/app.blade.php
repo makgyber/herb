@@ -18,6 +18,7 @@
     <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
     <link href="{{ asset('css/reservation.css') }}" rel="stylesheet">
     <script src="{{ asset('js/jquery2.js') }}"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 </head>
 
 <body>
@@ -35,25 +36,18 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Reports</a></li>
                 <li><a href="#">November 30, 2015</a></li>
                 <li><a href="#" id="clock">3:13 am</a></li>
+                <li><a href="{{url('auth/logout')}}"><span class="glyphicon glyphicon-log-out"></span></a></li>
             </ul>
         </div>
     </div>
 </nav>
 
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
-            @yield('sidebar')
-            <ul class="nav nav-sidebar">
-                <li><a href="{{ url('auth/logout') }}">Log Out</a></li>
-            </ul>
-        </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            @yield('content')
-        </div>
-    </div>
+    @yield('content')
 </div>
 
 <!-- Bootstrap core JavaScript

@@ -79,3 +79,20 @@
 .rm-col-hdr {
     width: 60px;
 }
+
+.rescal .ui-selecting { background: #FECA40; }
+.rescal .ui-selected { background: #F39814; color: white; }
+
+.form,
+.form-control,
+.btn {
+
+}
+
+.reserve-details {
+    font-size: smaller;
+}
+
+.panel-body {
+    padding: 8px;
+}

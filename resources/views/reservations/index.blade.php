@@ -1,123 +1,16 @@
 @extends('app')
-@section('sidebar')
-    <ul class="nav nav-sidebar">
-        <li class="active"><a href="{{ url('reservations') }}">Dashboard</a></li>
-        <li><a href="{{ url('reservations') }}">Reports</a></li>
-    </ul>
-@endsection
 
 @section('content')
-    <div class="well well-sm">
-    <form class="form-inline" method="get">
-        <div class="form-group">
-            <label for="startdate">Arrival</label>
-            <input type="date" class="form-control" id="startdate" name="startdate" value="{{$startdate}}">
+    <div class="row">
+        <div class="col-md-6">
+            @include('reservations.calendar')
         </div>
-
-        <div class="form-group">
-            <label for="enddate">Departure</label>
-            <input type="date" class="form-control" id="enddate" name="enddate" value="{{$enddate}}">
-        </div>
-
-        <div class="form-group">
-            <label for="enddate">Room Type</label>
-            <select name="room_type_id" class="form-control">
-                @foreach($roomTypes as $roomType)
-                <option value="{{$roomType->room_type_id}}"
-                        @if(old('room_type_id') == $roomType->room_type_id) selected @endif>
-                    {{$roomType->room_type_name}}
-                </option>
-                @endforeach
-            </select>
-        </div>
-
-        <button type="submit" class="btn btn-default">Go</button>
-    </form>
-    </div>
-
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <div class="btn-group" data-toggle="buttons" >
-                <label class="btn btn-default Pending" data-status="Pending" title="Click to hide/show all Pending reservations">
-                    <input type="checkbox" autocomplete="off"> Pending
-                </label>
-                <label class="btn btn-default Claimed" data-status="Claimed" title="Click to hide/show all Claimed reservations">
-                    <input type="checkbox" autocomplete="off"> Claimed
-                </label>
-                <label class="btn btn-default Cancelled" data-status="Cancelled" title="Click to hide/show all Cancelled reservations">
-                    <input type="checkbox" autocomplete="off"> Cancelled
-                </label>
-            </div>
-        </div>
-        <div class="panel-body" style="overflow: auto">
-            <table class="rescal">
-                <thead>
-                    <tr>
-                        <th class="rm-col-hdr">Room</th>
-                        @foreach($dates as $day)
-                            <th>{!!  str_replace(' ', '<br>', $day) !!}</th>
-                        @endforeach
-                    </tr>
-                </thead>
-
-                    @foreach($calendar as $door => $cal)
-                    <tbody>
-                        <tr>
-                            <th class="rm-col-cell" rowspan="2">{{ $door }}</th>
-                            @foreach($cal as $day => $reservation)
-                                <td>
-                                    <div class="btn btn-block btn-default reserve-btn"
-                                        data-door="{{ $door }}" data-day="{{ $day }}"
-                                    >
-                                        <span class="glyphicon glyphicon-bed"></span>
-                                    </div>
-                                    @foreach($reservation as $rr)
-                                        <div class="reserve {{$rr->status}} {{$rr->startmodifier}} {{$rr->endmodifier}}"
-                                             data-rrid="{{$rr->rr_id}}"
-                                             @if($rr->computedlength > 0 && $rr->startmodifier == 'extendleft' && $rr->endmodifier == 'extendright') style="width:{{ 100 * ((int) $rr->computedlength + 1) }}%"
-                                             @elseif($rr->computedlength > 0 && $rr->startmodifier == '' && $rr->endmodifier == 'extendright') style="width:{{ 100 * ((int) $rr->computedlength + 0.5) }}%"
-                                             @elseif($rr->computedlength > 0 && $rr->startmodifier == 'extendleft' && $rr->endmodifier == '') style="width:{{ 100 * ((int) $rr->computedlength + 0.5) }}%"
-                                             @elseif($rr->computedlength > 0 && $rr->startmodifier == '' && $rr->endmodifier == '') style="width:{{ 100 * ((int) $rr->computedlength + 0) }}%"
-                                                @endif
-                                                >
-                                            {{$rr->rr_id}}
-                                        </div>
-                                    @endforeach
-                                </td>
-                            @endforeach
-                        </tr>
-                    </tbody>
-                    @endforeach
-
-            </table>
+        <div class="col-md-6">
+            @include('reservations.details')
         </div>
     </div>
 
-
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-                </div>
-                <div class="modal-body">
-                    <table class="table table-bordered">
-                        <tr><th>#</th><td id="rrid"></td></tr>
-                        <tr><th>Check In</th><td id="checkin"></td></tr>
-                        <tr><th>Check Out</th><td id="checkout"></td></tr>
-                        <tr><th>Deposit</th><td id="deposit"></td></tr>
-                        <tr><th>Status</th><td id="status"></td></tr>
-                    </table>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Edit Details</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    @include('reservations.summary')
 
 
     <script>
@@ -141,10 +34,22 @@
                 var status = $(this).data('status');
                 $('.reserve.' + status).toggle();
             });
-            $('.reserve-btn').on('click', function(e){
-                e.preventDefault();
-                var door = $(this).data('door'), day = $(this).data('day');
-                document.location.href='{{ url('reservations/new') }}/' + door + '/' + day;
+
+
+            $( ".rescal tr" ).selectable({
+                filter: '.reserve-btn',
+                stop: function() {
+                    var result = $( "#select-result" ).empty();
+                    $( ".ui-selected", this ).each(function() {
+                        var door = $(this);
+                        result.append( " Room #" + door.data('day') );
+
+                    });
+                },
+                unselected: function(event, ui) {
+                    var door = $(ui.unselected).data('door');
+
+                }
             });
         });
     </script>
