@@ -6,7 +6,7 @@
                <div class="input-group input-group-sm">
                     <input type="text" name="reservecode" class="form-control" id="reservecode" />
                     <span class="input-group-btn">
-                        <button type="submit" class="btn btn-default">Go</button>
+                        <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
                     </span>
                </div>
            </div>
@@ -18,20 +18,12 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         Reserved Rooms
-                        <button class="btn btn-xs pull-right">Delete</button>
+                        <button class="btn btn-xs pull-right"><span class="glyphicon glyphicon-trash"></span></button>
                     </div>
                     <div class="panel-body">
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th><input type="checkbox"></th><th>Type</th><th>Room</th><th>In</th><th>Out</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr><td><input type="checkbox"></td><td>Mega Family</td><td>101</td><td>12-01</td><td>12-05</td></tr>
-                            <tr><td><input type="checkbox"></td><td>Mega Family</td><td>102</td><td>12-03</td><td>12-06</td></tr>
-                            </tbody>
-                        </table>
+                        <ul class="list-group" id="">
+
+                        </ul>
                     </div>
                 </div>
                 <div class="panel panel-info">

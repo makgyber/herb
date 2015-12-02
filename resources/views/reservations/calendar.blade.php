@@ -2,22 +2,18 @@
     <div class="panel-heading">
         <form class="form" method="get">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-12">
                     <div class="form-group form-group-sm">
-                        <label for="startdate">Arrival</label>
-                        <input type="date" class="form-control" id="startdate" name="startdate" value="{{$startdate}}">
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group form-group-sm">
-                        <label for="enddate">Departure</label>
-                        <input type="date" class="form-control" id="enddate" name="enddate" value="{{$enddate}}">
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="enddate">Room Type</label>
                         <div class="input-group input-group-sm">
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-log-in" title="CHECK IN"></span>
+                            </span>
+                            <input type="date" class="form-control" id="startdate" name="startdate" value="{{$startdate}}">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-log-out"  title="CHECK OUT"></span></span>
+                            <input type="date" class="form-control" id="enddate" name="enddate" value="{{$enddate}}">
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-home" title="ROOM TYPE"></span>
+                            </span>
                             <select name="room_type_id" class="form-control">
                                 @foreach($roomTypes as $roomType)
                                     <option value="{{$roomType->room_type_id}}"
@@ -27,13 +23,15 @@
                                 @endforeach
                             </select>
                             <span class="input-group-btn">
-                                <button type="submit" class="btn btn-default">Go</button>
+                                <button type="submit" class="btn btn-default">
+                                    <span class="glyphicon glyphicon-calendar" title="UPDATE CALENDAR"></span>
+                                </button>
                             </span>
                         </div>
-
                     </div>
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-md-12">
                     <div class="btn-group btn-group-xs" data-toggle="buttons" >

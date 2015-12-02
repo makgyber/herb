@@ -14,6 +14,7 @@
 
 
     <script>
+        var rrooms = [];
         $(document).ready(function(){
             $("#clock").jclock({foreground:'yellow',background:'green',fontSize:'20px',timeNotation:'24h'});
             $('.reserve').on('click', function(e){
@@ -39,16 +40,18 @@
             $( ".rescal tr" ).selectable({
                 filter: '.reserve-btn',
                 stop: function() {
-                    var result = $( "#select-result" ).empty();
+                    var door = {}, days = [];
                     $( ".ui-selected", this ).each(function() {
-                        var door = $(this);
-                        result.append( " Room #" + door.data('day') );
-
+                        door = $(this).data('door');
+                        days.push($(this).data('day'));
                     });
+                    rrooms[door] = days;
+                    console.log(rrooms);
                 },
                 unselected: function(event, ui) {
                     var door = $(ui.unselected).data('door');
-
+                    var index = rrooms.splice(door, 1);
+                    console.log(rrooms);
                 }
             });
         });
