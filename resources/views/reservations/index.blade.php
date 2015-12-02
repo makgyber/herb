@@ -14,7 +14,7 @@
 
 
     <script>
-        var rrooms = [];
+        var rrooms = {};
         $(document).ready(function(){
             $("#clock").jclock({foreground:'yellow',background:'green',fontSize:'20px',timeNotation:'24h'});
             $('.reserve').on('click', function(e){
@@ -50,7 +50,9 @@
                 },
                 unselected: function(event, ui) {
                     var door = $(ui.unselected).data('door');
-                    var index = rrooms.splice(door, 1);
+                    if (rrooms[door] !== undefined) {
+                        delete rrooms[door];
+                    }
                     console.log(rrooms);
                 }
             });
