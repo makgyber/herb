@@ -60,11 +60,11 @@
                 @endforeach
             </tr>
             </thead>
-
+            <tbody>
             @foreach($calendar as $door => $cal)
-                <tbody>
-                <tr>
-                    <th class="rm-col-cell" rowspan="2">{{ $door }}</th>
+
+                <tr class="rm-row">
+                    <td class="rm-col-cell">{{ $door }}</td>
                     @foreach($cal as $day => $reservation)
                         <td>
                             <div class="btn btn-block btn-default reserve-btn btn-xs"
@@ -87,9 +87,9 @@
                         </td>
                     @endforeach
                 </tr>
-                </tbody>
-            @endforeach
 
+            @endforeach
+            </tbody>
         </table>
     </div>
 </div>

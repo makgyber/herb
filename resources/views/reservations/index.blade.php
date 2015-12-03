@@ -14,6 +14,7 @@
 
 
     <script>
+
         var rrooms = {};
         $(document).ready(function(){
             $("#clock").jclock({foreground:'yellow',background:'green',fontSize:'20px',timeNotation:'24h'});
@@ -37,7 +38,7 @@
             });
 
 
-            $( ".rescal tr" ).selectable({
+            $( ".rm-row" ).selectable({
                 filter: '.reserve-btn',
                 stop: function() {
                     if ($( ".ui-selected", this).length > 0) {
@@ -51,38 +52,42 @@
                     buildRoomList();
                 },
                 unselected: function(event, ui) {
-                    var door = $(ui.unselected).data('door');
-                    if (rrooms[door] !== undefined) {
-                        delete rrooms[door];
+                    if (ui !== undefined) {
+                        var door = $(ui.unselected).data('door');
+                        if (rrooms[door] !== undefined) {
+                            delete rrooms[door];
+                        }
                     }
                 }
             });
 
+            $('#removerooms').on('click', function(e){
+                e.preventDefault();
+                SelectSelectableElement($('.rm-row'), $('x', $('.rm-row')))
+            });
 
             function buildRoomList() {
                 var rrlist = $('#rroomlist').empty();
                 var ctr = 1;
-                $.each(rrooms, function(x, y){
-                    if (x !== undefined) {
-                        rrlist.append('<tr><td>' + ctr + '</td><td>' + x + '</td><td>' + y[0] + '</td><td>' + y[y.length - 1] + '</td><td></tr>');
-                        ctr++;
-                    }
-                });
+                if (rrooms !== undefined) {
+                    $.each(rrooms, function(x, y){
+                        if (x !== undefined) {
+                            rrlist.append('<tr><td>' + ctr + '</td><td>' + x + '</td><td>' + y[0] + '</td><td>' + y[y.length - 1] + '</td><td></tr>');
+                            ctr++;
+                        }
+                    });
+                }
             }
-
-
-
         });
+
         function SelectSelectableElement(selectableContainer, elementsToSelect) {
-            // add unselecting class to all elements in the styleboard canvas except the ones to select
-            $(".ui-selected", selectableContainer).not(elementsToSelect).removeClass("ui-selected").addClass("ui-unselecting");
-
-            // add ui-selecting class to the elements to select
-            $(elementsToSelect).not(".ui-selected").addClass("ui-selecting");
-
-            // trigger the mouse stop event (this will select all .ui-selecting elements, and deselect all .ui-unselecting elements)
-            selectableContainer.data('ui-selectable')._mouseStop(null);
-            $('.rescal tr').trigger('selectablestart');
+            $.each(selectableContainer, function(i, j) {
+                var selectableContainer = $(j);
+                $(".ui-selected", selectableContainer).not(elementsToSelect).removeClass("ui-selected").addClass("ui-unselecting");
+                $(elementsToSelect).not(".ui-selected").addClass("ui-selecting");
+                selectableContainer.data('ui-selectable')._mouseStop();
+            });
         }
+
     </script>
 @endsection

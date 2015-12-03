@@ -18,7 +18,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         Reserved Rooms
-                        <button class="btn btn-xs pull-right"><span class="glyphicon glyphicon-trash"></span></button>
+                        <button class="btn btn-xs pull-right" id="removerooms"><span class="glyphicon glyphicon-trash"></span></button>
                     </div>
                     <table class="table">
                         <thead>

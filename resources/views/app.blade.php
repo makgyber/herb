@@ -17,8 +17,8 @@
     <!-- Custom styles for this template -->
     <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
     <link href="{{ asset('css/reservation.css') }}" rel="stylesheet">
-    <script src="{{ asset('js/jquery2.js') }}"></script>
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="{{ asset('js/jquery-1.11.3.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
 </head>
 
 <body>
@@ -54,13 +54,16 @@
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 
+
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/jclock.js') }}"></script>
+
 <script>
     $(document).ready(function(){
         $("#clock").jclock({foreground:'white',background:'green',fontSize:'16px',timeNotation:'24h'});
     });
 </script>
+
 </body>
 </html>
 
