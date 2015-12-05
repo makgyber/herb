@@ -2,12 +2,12 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
             @include('reservations.calendar')
         </div>
-        <div class="col-md-6">
+        {{--<div class="col-md-6">
             @include('reservations.details')
-        </div>
+        </div>--}}
     </div>
 
     @include('reservations.summary')

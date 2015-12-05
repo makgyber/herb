@@ -6,13 +6,13 @@
                     <div class="form-group form-group-sm">
                         <div class="input-group input-group-sm">
                             <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-log-in" title="CHECK IN"></span>
+                                <span class="glyphicon glyphicon-log-in" title="CHECK IN"></span> Check In
                             </span>
                             <input type="date" class="form-control" id="startdate" name="startdate" value="{{$startdate}}">
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-log-out"  title="CHECK OUT"></span></span>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-log-out"  title="CHECK OUT"></span> Check Out</span>
                             <input type="date" class="form-control" id="enddate" name="enddate" value="{{$enddate}}">
                             <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-home" title="ROOM TYPE"></span>
+                                <span class="glyphicon glyphicon-home" title="ROOM TYPE"></span> Room Type
                             </span>
                             <select name="room_type_id" class="form-control">
                                 @foreach($roomTypes as $roomType)
@@ -24,7 +24,7 @@
                             </select>
                             <span class="input-group-btn">
                                 <button type="submit" class="btn btn-default">
-                                    <span class="glyphicon glyphicon-calendar" title="UPDATE CALENDAR"></span>
+                                    <span class="glyphicon glyphicon-calendar" title="REFRESH CALENDAR"></span> Refresh Calendar
                                 </button>
                             </span>
                         </div>
