@@ -1,4 +1,4 @@
-<form class="form-inline" method="get" action="{{url('reservations')}}">
+<form class="form-inline" method="post" action="{{url('reservations/save')}}">
 <div class="panel panel-primary reserve-details">
    <div class="panel-heading">
 
@@ -7,13 +7,13 @@
                <div class="input-group input-group-sm">
                     <input type="text" name="reserve_code" class="form-control" id="reserve_code" value="{{$reservation->reserve_code or ''}}" />
                     <span class="input-group-btn">
-                        <button type="submit" class="btn btn-default" id="search"><span class="glyphicon glyphicon-search"></span></button>
+                        <button type="button" class="resform-btn btn btn-default" id="search"><span class="glyphicon glyphicon-search"></span></button>
                     </span>
                </div>
-               <button class="btn btn-default btn-sm resform-btn" id="new">New</button>
-               <button class="btn btn-default btn-sm resform-btn" id="save">Save</button>
-               <button class="btn btn-default btn-sm resform-btn" id="print">Print</button>
-               <button class="btn btn-default btn-sm resform-btn" id="cancel">Cancel</button>
+               <button class="btn btn-default btn-sm resform-btn" id="new" type="button">New</button>
+               <button class="btn btn-default btn-sm resform-btn" id="save" type="submit">Save</button>
+               <button class="btn btn-default btn-sm resform-btn" id="print" type="submit">Print</button>
+               <button class="btn btn-default btn-sm resform-btn" id="cancel" type="submit">Cancel</button>
            </div>
 
    </div>

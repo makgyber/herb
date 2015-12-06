@@ -75,13 +75,16 @@
                 }
             }
 
-            $('#resform-btn').on('click', function(e){
-                e.preventDefault();
+            $('.resform-btn').on('click', function(e){
+
                 var act = $(this).attr('id');
+
                 if (act == 'new') {
-
+                    e.preventDefault();
+                    document.location.href='{{url("reservations")}}';
                 } else if(act == 'search') {
-
+                    e.preventDefault();
+                    document.location.href='{{url("reservations")}}' + '?reserve_code=' + $('#reserve_code').val();
                 }
             });
         });

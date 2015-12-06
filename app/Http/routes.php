@@ -62,7 +62,7 @@ Route::group(['prefix' => 'reservations', 'namespace' => 'Reservations'], functi
 
 	Route::get('/', 'ReservationController@index');
 	Route::get('/new/{door}/{day}', 'ReservationController@create');
-	Route::post('create', 'ReservationController@store');
+	Route::post('save', 'ReservationController@store');
 
 });
 

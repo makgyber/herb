@@ -54,7 +54,7 @@ class ReservationController extends Controller
      */
     public function create($door, $day)
     {
-        return view('reservations.create', compact('door'));
+
     }
 
     /**
@@ -66,6 +66,7 @@ class ReservationController extends Controller
     public function store(Request $request)
     {
         //
+        dd($request->all());
     }
 
     /**
