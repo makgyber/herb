@@ -72,7 +72,7 @@ class ReserveRoomRepository extends Repository
         $dates = Calendar::getInclusiveDates($start, $end, 'Y-m-d');
         $rooms = Room::where('room_type_id', $roomType)->get();
 
-        $sql = "select rr_id, room_id, status, if(checkin < '$start', '$start', checkin) as 'calstart',  if(checkin < '$start', 'extendleft', '') as 'startmodifier', if(checkout > '$end', 'extendright', '') as 'endmodifier',(datediff('$end', '$start') + if(datediff(checkout, '$end') < 0, datediff(checkout, '$end'), 0) + if(datediff('$start', checkin) < 0, datediff('$start', checkin), 0)) as 'computedlength' from reserve_rooms where checkin <= '$end' and checkout >= '$start' and room_id > 0 and room_type_id = $roomType order by room_id, checkin";
+        $sql = "select rr_id, reserve_code, room_id, status, if(checkin < '$start', '$start', checkin) as 'calstart',  if(checkin < '$start', 'extendleft', '') as 'startmodifier', if(checkout > '$end', 'extendright', '') as 'endmodifier',(datediff('$end', '$start') + if(datediff(checkout, '$end') < 0, datediff(checkout, '$end'), 0) + if(datediff('$start', checkin) < 0, datediff('$start', checkin), 0)) as 'computedlength' from reserve_rooms where checkin <= '$end' and checkout >= '$start' and room_id > 0 and room_type_id = $roomType order by room_id, checkin";
         $rr = DB::select($sql);
 
         $calendar = [];

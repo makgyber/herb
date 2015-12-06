@@ -7,6 +7,8 @@ use App\Models\BookingRoomTypes;
 use App\Models\Calendar;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Models\Partner;
+use App\Models\Reservation;
 use Illuminate\Http\Request;
 
 class ReservationController extends Controller
@@ -27,13 +29,22 @@ class ReservationController extends Controller
         $enddate = $request->get('enddate', $now->add(new \DateInterval('P10D'))->format('Y-m-d'));
         $room_type_id = $request->get('room_type_id', $firstRoomType->room_type_id);
 
+        $reservation = new Reservation();
+        if ($request->has('reserve_code')) {
+            $reserve_code = $request->get('reserve_code');
+            $reservation = Reservation::where('reserve_code', $reserve_code)->get()->first();
+        }
+
         $calendar = $reserveRoomRepo->findReserveRoomsByRangeAndRoomType($startdate, $enddate, $room_type_id);
 
         $dates = Calendar::getInclusiveDates($startdate, $enddate);
+        $partners = Partner::all();
 
         $request->flash();
 
-        return view('reservations.index', compact('calendar', 'roomTypes', 'dates', 'startdate', 'enddate'));
+        $cardTypes = ['AMEX', 'JBC', 'Visa', 'Mastercard', 'BDO Card', 'Express Net', 'Megalink', 'BancNet', 'BPI'];
+        return view('reservations.index', compact('calendar', 'roomTypes',
+            'dates', 'startdate', 'enddate', 'reservation', 'partners', 'cardTypes'));
     }
 
     /**

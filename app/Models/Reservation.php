@@ -6,6 +6,7 @@ class Reservation extends Model
 {
     
 	public $table = "reservations";
+	public $primaryKey = 'reservation_id';
     
 
 	public $fillable = [
@@ -62,4 +63,16 @@ class Reservation extends Model
 	    
 	];
 
+
+	public function guest() {
+		return $this->belongsTo('App\Models\Guest', 'guest_id');
+	}
+
+	public function partnerTransactions() {
+		return $this->belongsTo('App\Models\PartnerTransaction', 'reserve_code', 'reserve_code');
+	}
+
+	public function reserveRooms() {
+		return $this->hasMany('App\Models\ReserveRoom', 'reserve_code', 'reserve_code');
+	}
 }

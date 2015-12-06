@@ -2,16 +2,15 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
             @include('reservations.calendar')
         </div>
-        {{--<div class="col-md-6">
+        <div class="col-md-6">
             @include('reservations.details')
-        </div>--}}
+        </div>
     </div>
 
     @include('reservations.summary')
-
 
     <script>
 
@@ -20,16 +19,13 @@
             $("#clock").jclock({foreground:'yellow',background:'green',fontSize:'20px',timeNotation:'24h'});
             $('.reserve').on('click', function(e){
                 e.preventDefault();
-                var url = '{{ url('api/v1/reservation/detail') }}' + '/' + $(this).data('rrid');
-                $.get(url, function(resp){
-                    $('#myModalLabel').html('Reservation Code: ' + resp.reserve_code);
-                    $('#checkin').html(resp.checkin);
-                    $('#checkout').html(resp.checkout);
-                    $('#deposit').html(resp.deposit);
-                    $('#status').html(resp.status);
-                    $('#rrid').html(resp.rr_id);
-                    $('#myModal').modal('show');
-                });
+                var params=[
+                        'startdate=' + $('#startdate').val(),
+                        'enddate=' + $('#enddate').val(),
+                        'room_type_id=' + $('#room_type_id').val(),
+                        'reserve_code=' + $(this).data('reserve')
+                    ];
+                document.location.href = '{{url("reservations")}}' + '?' + params.join('&');
             });
             $('label.btn').on('click', function(e){
                 e.preventDefault();

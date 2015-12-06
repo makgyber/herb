@@ -6,15 +6,15 @@
                     <div class="form-group form-group-sm">
                         <div class="input-group input-group-sm">
                             <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-log-in" title="CHECK IN"></span> Check In
+                                <span class="glyphicon glyphicon-log-in" title="CHECK IN"></span>
                             </span>
                             <input type="date" class="form-control" id="startdate" name="startdate" value="{{$startdate}}">
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-log-out"  title="CHECK OUT"></span> Check Out</span>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-log-out"  title="CHECK OUT"></span></span>
                             <input type="date" class="form-control" id="enddate" name="enddate" value="{{$enddate}}">
                             <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-home" title="ROOM TYPE"></span> Room Type
+                                <span class="glyphicon glyphicon-home" title="ROOM TYPE"></span>
                             </span>
-                            <select name="room_type_id" class="form-control">
+                            <select name="room_type_id" id="room_type_id" class="form-control">
                                 @foreach($roomTypes as $roomType)
                                     <option value="{{$roomType->room_type_id}}"
                                             @if(old('room_type_id') == $roomType->room_type_id) selected @endif>
@@ -24,7 +24,7 @@
                             </select>
                             <span class="input-group-btn">
                                 <button type="submit" class="btn btn-default">
-                                    <span class="glyphicon glyphicon-calendar" title="REFRESH CALENDAR"></span> Refresh Calendar
+                                    <span class="glyphicon glyphicon-calendar" title="REFRESH CALENDAR"></span>
                                 </button>
                             </span>
                         </div>
@@ -74,7 +74,7 @@
                             </div>
                             @foreach($reservation as $rr)
                                 <div class="reserve {{$rr->status}} {{$rr->startmodifier}} {{$rr->endmodifier}}"
-                                     data-rrid="{{$rr->rr_id}}"
+                                     data-rrid="{{$rr->rr_id}}" data-reserve="{{$rr->reserve_code}}"
                                      @if($rr->computedlength > 0 && $rr->startmodifier == 'extendleft' && $rr->endmodifier == 'extendright') style="width:{{ 100 * ((int) $rr->computedlength + 1) }}%"
                                      @elseif($rr->computedlength > 0 && $rr->startmodifier == '' && $rr->endmodifier == 'extendright') style="width:{{ 100 * ((int) $rr->computedlength + 0.5) }}%"
                                      @elseif($rr->computedlength > 0 && $rr->startmodifier == 'extendleft' && $rr->endmodifier == '') style="width:{{ 100 * ((int) $rr->computedlength + 0.5) }}%"

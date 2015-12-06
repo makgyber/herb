@@ -42,3 +42,9 @@ Route::resource("reserveRooms", "ReserveRoomAPIController");
 Route::resource("occupancyRooms", "OccupancyRoomAPIController");
 
 Route::resource("occupancyRooms", "OccupancyRoomAPIController");
+
+Route::resource("guests", "GuestAPIController");
+
+Route::resource("partners", "PartnerAPIController");
+
+Route::resource("partnerTransactions", "PartnerTransactionAPIController");

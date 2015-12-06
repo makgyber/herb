@@ -206,3 +206,27 @@ Route::get('occupancyRooms/{id}/delete', [
     'as' => 'occupancyRooms.delete',
     'uses' => 'OccupancyRoomController@destroy',
 ]);
+
+
+Route::resource('guests', 'GuestController');
+
+Route::get('guests/{id}/delete', [
+    'as' => 'guests.delete',
+    'uses' => 'GuestController@destroy',
+]);
+
+
+Route::resource('partners', 'PartnerController');
+
+Route::get('partners/{id}/delete', [
+    'as' => 'partners.delete',
+    'uses' => 'PartnerController@destroy',
+]);
+
+
+Route::resource('partnerTransactions', 'PartnerTransactionController');
+
+Route::get('partnerTransactions/{id}/delete', [
+    'as' => 'partnerTransactions.delete',
+    'uses' => 'PartnerTransactionController@destroy',
+]);
