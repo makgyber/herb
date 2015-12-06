@@ -38,3 +38,7 @@ Route::resource("reservedRoomDates", "ReservedRoomDateAPIController");
 Route::resource("bookingRoomTypes", "BookingRoomTypesAPIController");
 
 Route::resource("reserveRooms", "ReserveRoomAPIController");
+
+Route::resource("occupancyRooms", "OccupancyRoomAPIController");
+
+Route::resource("occupancyRooms", "OccupancyRoomAPIController");

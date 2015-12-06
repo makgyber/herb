@@ -175,6 +175,17 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
 */
 
 
+Route::group(['prefix' => 'frontdesk', 'namespace' => 'Frontdesk'], function(){
+
+	Route::get('/', 'FrontdeskController@index');
+	Route::get('/checkin/{door}', 'FrontdeskController@checkinform');
+	Route::post('/checkin/{door}', 'FrontdeskController@checkin');
+	Route::get('/checkout/{door}', 'FrontdeskController@checkoutform');
+	Route::post('/checkout/{door}', 'FrontdeskController@checkout');
+	Route::get('/transfer', 'FrontdeskController@transferform');
+	Route::post('/transfer', 'FrontdeskController@transfer');
+
+});
 
 
 
@@ -186,3 +197,12 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function(){
 
 
 
+
+
+
+Route::resource('occupancyRooms', 'OccupancyRoomController');
+
+Route::get('occupancyRooms/{id}/delete', [
+    'as' => 'occupancyRooms.delete',
+    'uses' => 'OccupancyRoomController@destroy',
+]);
