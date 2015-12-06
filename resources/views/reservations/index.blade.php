@@ -74,6 +74,16 @@
                     });
                 }
             }
+
+            $('#resform-btn').on('click', function(e){
+                e.preventDefault();
+                var act = $(this).attr('id');
+                if (act == 'new') {
+
+                } else if(act == 'search') {
+
+                }
+            });
         });
 
         function SelectSelectableElement(selectableContainer, elementsToSelect) {
@@ -84,6 +94,7 @@
                 selectableContainer.data('ui-selectable')._mouseStop();
             });
         }
+
 
     </script>
 @endsection
