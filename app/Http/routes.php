@@ -230,3 +230,51 @@ Route::get('partnerTransactions/{id}/delete', [
     'as' => 'partnerTransactions.delete',
     'uses' => 'PartnerTransactionController@destroy',
 ]);
+
+
+Route::resource('cardTypes', 'CardTypeController');
+
+Route::get('cardTypes/{id}/delete', [
+    'as' => 'cardTypes.delete',
+    'uses' => 'CardTypeController@destroy',
+]);
+
+
+Route::resource('financeCharges', 'FinanceChargeController');
+
+Route::get('financeCharges/{id}/delete', [
+    'as' => 'financeCharges.delete',
+    'uses' => 'FinanceChargeController@destroy',
+]);
+
+
+Route::resource('financeCharges', 'FinanceChargeController');
+
+Route::get('financeCharges/{id}/delete', [
+    'as' => 'financeCharges.delete',
+    'uses' => 'FinanceChargeController@destroy',
+]);
+
+
+Route::resource('financeCharges', 'FinanceChargeController');
+
+Route::get('financeCharges/{id}/delete', [
+    'as' => 'financeCharges.delete',
+    'uses' => 'FinanceChargeController@destroy',
+]);
+
+
+Route::resource('financeCharges', 'FinanceChargeController');
+
+Route::get('financeCharges/{id}/delete', [
+    'as' => 'financeCharges.delete',
+    'uses' => 'FinanceChargeController@destroy',
+]);
+
+
+Route::resource('partnerDiscounts', 'PartnerDiscountController');
+
+Route::get('partnerDiscounts/{id}/delete', [
+    'as' => 'partnerDiscounts.delete',
+    'uses' => 'PartnerDiscountController@destroy',
+]);

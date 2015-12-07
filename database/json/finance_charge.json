@@ -1,0 +1,17 @@
+[
+  {
+    "field":"card_type_id:integer",
+    "type":"number",
+    "validations": "required"
+  },
+  {
+    "field":"account_type:text",
+    "type":"radio:debit,credit",
+    "validations": ""
+  },
+  {
+    "field":"charge:string",
+    "type":"number",
+    "validations": ""
+  }
+]

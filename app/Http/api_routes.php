@@ -48,3 +48,15 @@ Route::resource("guests", "GuestAPIController");
 Route::resource("partners", "PartnerAPIController");
 
 Route::resource("partnerTransactions", "PartnerTransactionAPIController");
+
+Route::resource("cardTypes", "CardTypeAPIController");
+
+Route::resource("financeCharges", "FinanceChargeAPIController");
+
+Route::resource("financeCharges", "FinanceChargeAPIController");
+
+Route::resource("financeCharges", "FinanceChargeAPIController");
+
+Route::resource("financeCharges", "FinanceChargeAPIController");
+
+Route::resource("partnerDiscounts", "PartnerDiscountAPIController");
