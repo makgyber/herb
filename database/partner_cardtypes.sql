@@ -168,3 +168,4 @@ MODIFY `id` mediumint(9) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 
 ALTER TABLE `occupancy` ADD `discount_rate` DECIMAL(11,2) NOT NULL DEFAULT '0.00' ;
 ALTER TABLE `occupancy` CHANGE `actual_checkout` `actual_checkout` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00';
+ALTER TABLE `guests` ADD `created_at` TIMESTAMP NOT NULL , ADD `updated_at` TIMESTAMP NOT NULL ;

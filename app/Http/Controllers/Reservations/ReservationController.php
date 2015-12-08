@@ -7,6 +7,7 @@ use App\Models\BookingRoomTypes;
 use App\Models\Calendar;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Models\Guest;
 use App\Models\Partner;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
@@ -112,5 +113,16 @@ class ReservationController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function guest(Request $request)
+    {
+        $fn = $request->get('firstname');
+        $ln = $request->get('lastname');
+
+        $guest = Guest::firstOrCreate(['firstname' => $fn, 'lastname' => $ln]);
+
+        return response()->json($guest);
+
     }
 }

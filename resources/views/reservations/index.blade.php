@@ -15,6 +15,17 @@
     <script>
 
         var rrooms = {};
+
+        function reloadPageWithParameters(reservecode) {
+            var params=[
+                'startdate=' + $('#startdate').val(),
+                'enddate=' + $('#enddate').val(),
+                'room_type_id=' + $('#room_type_id').val(),
+                'reserve_code=' + reservecode
+            ];
+            document.location.href = '{{url("reservations")}}' + '?' + params.join('&');
+        }
+
         $(document).ready(function(){
             $("#clock").jclock({foreground:'yellow',background:'green',fontSize:'20px',timeNotation:'24h'});
             $('.reserve').on('click', function(e){

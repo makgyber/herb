@@ -1,6 +1,6 @@
 <div class="panel panel-default">
     <div class="panel-heading">
-        <form class="form" method="get">
+        <form class="form" method="get" id="calendarform">
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group form-group-sm">
@@ -23,7 +23,7 @@
                                 @endforeach
                             </select>
                             <span class="input-group-btn">
-                                <button type="submit" class="btn btn-default">
+                                <button type="submit" class="btn btn-default" id="calsubmit">
                                     <span class="glyphicon glyphicon-calendar" title="REFRESH CALENDAR"></span>
                                 </button>
                             </span>
@@ -93,3 +93,11 @@
         </table>
     </div>
 </div>
+<script>
+    $(document).ready(function(){
+        $('#calsubmit').on('click', function(e){
+            e.preventDefault();
+            reloadPageWithParameters($('#reserve_code').val());
+        });
+    });
+</script>

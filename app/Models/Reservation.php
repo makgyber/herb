@@ -7,7 +7,7 @@ class Reservation extends Model
     
 	public $table = "reservations";
 	public $primaryKey = 'reservation_id';
-    
+    public $timestamps = false;
 
 	public $fillable = [
 	    "reserve_code",
