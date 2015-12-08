@@ -11,6 +11,8 @@ use App\Models\Guest;
 use App\Models\Partner;
 use App\Models\PartnerTransaction;
 use App\Models\Reservation;
+use App\Models\ReserveRoom;
+use App\Models\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 
@@ -71,6 +73,7 @@ class ReservationController extends Controller
 
 
         $all = $request->all();
+        $rooms = json_decode($all['rrooms'], true);
 
         $now = date('Y-m-d H:i:s');
         $reservecode = (isset($all['reserve_code']) && trim($all['reserve_code']) != '') ? $all['reserve_code'] : Reservation::generateReserveCode();
@@ -93,13 +96,13 @@ class ReservationController extends Controller
             "multi_entry_approver" => ""
         ];
 
-        $res = Reservation::find($reservecode);
 
-        if ($res->exists) {
-            Reservation::find($reservecode)->update($reservation);
-        } else {
+        $res = Reservation::find($reservecode);
+        if (is_null($res)) {
             $reservation['reserve_code'] = $reservecode;
             Reservation::create($reservation);
+        } else {
+            Reservation::find($reservecode)->update($reservation);
         }
 
 
@@ -115,14 +118,33 @@ class ReservationController extends Controller
         ];
 
         $pt = PartnerTransaction::where(['reserve_code' => $reservecode])->get()->first();
-        if ($pt->exists) {
-            $pt->update($partnerTrxn);
-        } else {
+        if (is_null($pt)) {
             PartnerTransaction::create($partnerTrxn);
+        } else {
+            $pt->update($partnerTrxn);
         }
+
+        $this->saveReserveRooms($rooms, $reservecode);
 
 
         return redirect('reservations' . '?reserve_code=' . $reservecode)->with('status', 'Reservation data saved');
+    }
+
+    protected function saveReserveRooms($rrooms, $reservecode) {
+        foreach ($rrooms as $door => $dates) {
+            $rm  = Room::where(['door_name' => $door])->get()->first();
+
+            $resKey = [
+                'reserve_code' => $reservecode,
+                'room_type_id' => $rm->room_type_id,
+                'room_id' => $rm->room_id
+            ];
+
+            $reserveRoomModel = ReserveRoom::firstOrNew($resKey);
+            $reserveRoomModel->checkin = $dates[0];
+            $reserveRoomModel->checkout = $dates[ count($dates) - 1 ];
+            $reserveRoomModel->save();
+        }
     }
 
     /**

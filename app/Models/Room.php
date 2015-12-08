@@ -6,7 +6,7 @@ class Room extends Model
 {
     
 	public $table = "rooms";
-    
+    public $primaryKey = "room_id";
 
 	public $fillable = [
 	    "room_id",

@@ -103,8 +103,38 @@
                     if ($('#guest_id').val() == '') {
                         alert('Please enter a valid guest');
                     } else {
+                        $('#rrooms').val( JSON.stringify(rrooms) );
                         $('#reserveform').submit();
                     }
+                }
+            });
+
+            $('.checkin-icon').on('click', function(e){
+                e.preventDefault();
+                var act = $(this).attr('id');
+                if (act == 'checkin') {
+                    var params = [
+                        'rrid=' + $(this).data('rrid'),
+                        'code=' + $('#reserve_code').val(),
+                        'fn=' + $('#firstname').val(),
+                        'ln=' + $('#lastname').val(),
+                        'room=' + $(this).data('roomid'),
+                        'dep=' + $('#reserve_fee').val()
+                    ];
+                    window.location.href='http://localhost/fds/ajax/checkinform.php?' + params.join('&');
+                } else if (act == 'checkinclose') {
+                    var params = [
+                        'close=1',
+                        'rrid=' + $(this).data('rrid'),
+                        'code=' + $('#reserve_code').val(),
+                        'fn=' + $('#firstname').val(),
+                        'ln=' + $('#lastname').val(),
+                        'room=' + $(this).data('roomid'),
+                        'dep=' + $('#reserve_fee').val()
+                    ];
+                    window.location.href='http://localhost/fds/ajax/checkinform.php?' + params.join('&');
+                } else if (act == 'rrdel') {
+
                 }
             });
         });
