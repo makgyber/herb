@@ -10,6 +10,24 @@
                     <input type="number" class="form-control" id="reserve_fee" name="reserve_fee" value="{{$reservation->reserve_fee or ''}}">
                 </div>
             </div>
+            <div class="form-group form-group-sm row col-sm-12">
+                <label for="batch_number" class="col-sm-5 control-label">Batch Number</label>
+                <div class="col-sm-7">
+                    <input type="number" class="form-control" id="batch_number" name="batch_number" value="{{$reservation->batch_number or ''}}">
+                </div>
+            </div>
+            <div class="form-group form-group-sm row col-sm-12">
+                <label for="approval_code" class="col-sm-5 control-label">Approval Code</label>
+                <div class="col-sm-7">
+                    <input type="number" class="form-control" id="approval_code" name="approval_code" value="{{$reservation->approval_code or ''}}">
+                </div>
+            </div>
+            <div class="form-group form-group-sm row col-sm-12">
+                <label for="card_suffix" class="col-sm-5 control-label">Card Suffix</label>
+                <div class="col-sm-7">
+                    <input type="number" class="form-control" id="card_suffix" name="card_suffix" value="{{$reservation->card_suffix or ''}}">
+                </div>
+            </div>
             <div class="form-group form-group-sm row  col-sm-12">
                 <label for="payment_type" class="col-sm-5 control-label">Payment Type</label>
                 <div class="col-sm-6">

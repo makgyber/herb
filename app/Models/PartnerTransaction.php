@@ -18,7 +18,9 @@ class PartnerTransaction extends Model
 		"recievable",
 		"payable",
 		"remarks",
-		"result_status"
+		"result_status",
+		"commission",
+		"discount"
 	];
 
     /**
@@ -31,7 +33,9 @@ class PartnerTransaction extends Model
 		"booking_number" => "string",
 		"partner_name" => "string",
 		"remarks" => "string",
-		"result_status" => "string"
+		"result_status" => "string",
+		"commission" => "string",
+		"discount" => "string"
     ];
 
 	public static $rules = [
@@ -39,3 +43,5 @@ class PartnerTransaction extends Model
 	];
 
 }
+
+

@@ -1,4 +1,4 @@
-<form class="form form-horizontal" method="post" action="{{url('reservations/save')}}">
+<form class="form form-horizontal" method="post" id="reserveform" name="reserveform" action="{{url('reservations/save')}}">
     <div class="panel panel-primary reserve-details">
         <div class="panel-heading form-inline">
 
@@ -16,6 +16,12 @@
 
         </div>
         <div class="panel-body">
+            @if (session('status'))
+                <div class="alert alert-success">
+                    {{ session('status') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button>
+                </div>
+            @endif
             <div class="row">
                 <div class="col-md-6">
                     @include('reservations.reserverooms')

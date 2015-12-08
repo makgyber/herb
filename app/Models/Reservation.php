@@ -1,12 +1,13 @@
 <?php namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model as Model;
+use Hash;
 
 class Reservation extends Model
 {
     
 	public $table = "reservations";
-	public $primaryKey = 'reservation_id';
+	public $primaryKey = 'reserve_code';
     public $timestamps = false;
 
 	public $fillable = [
@@ -74,5 +75,9 @@ class Reservation extends Model
 
 	public function reserveRooms() {
 		return $this->hasMany('App\Models\ReserveRoom', 'reserve_code', 'reserve_code');
+	}
+
+	public static function generateReserveCode($pre=1) {
+		return $pre . "-" . time();
 	}
 }

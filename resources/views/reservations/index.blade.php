@@ -92,10 +92,19 @@
 
                 if (act == 'new') {
                     e.preventDefault();
-                    document.location.href='{{url("reservations")}}';
+                    {{--document.location.href='{{url("reservations")}}';--}}
+                    reloadPageWithParameters('');
                 } else if(act == 'search') {
                     e.preventDefault();
-                    document.location.href='{{url("reservations")}}' + '?reserve_code=' + $('#reserve_code').val();
+                    {{--document.location.href='{{url("reservations")}}' + '?reserve_code=' + $('#reserve_code').val();--}}
+                    reloadPageWithParameters($('#reserve_code').val());
+                } else if(act == 'save') {
+                    e.preventDefault();
+                    if ($('#guest_id').val() == '') {
+                        alert('Please enter a valid guest');
+                    } else {
+                        $('#reserveform').submit();
+                    }
                 }
             });
         });

@@ -16,7 +16,7 @@
                 <select class="form-control" name="partner" id="partner">
                     <option></option>
                     @foreach($partners as $partner)
-                        <option value="" @if($partner->partner_name == $reservation->Partner) selected @endif>
+                        <option value="{{$partner->partner_name}}" @if($partner->partner_name == $reservation->Partner) selected @endif>
                             {{$partner->partner_name}}</option>
                     @endforeach
                 </select>
@@ -35,9 +35,15 @@
             </div>
         </div>
         <div class="form-group form-group-sm row col-sm-12">
-            <label for="commission" class="col-sm-5 control-label">Discount</label>
+            <label for="discount" class="col-sm-5 control-label">discount</label>
             <div class="col-sm-7">
-                <input type="text" class="form-control" id="commission" name="commission" value="{{$reservation->partnerTransactions->payable or ''}}">
+                <input type="text" class="form-control" id="discount" name="discount" value="{{$reservation->partnerTransactions->discount or ''}}">
+            </div>
+        </div>
+        <div class="form-group form-group-sm row col-sm-12">
+            <label for="remarks" class="col-sm-5 control-label">Remarks</label>
+            <div class="col-sm-7">
+                <input type="text" class="form-control" id="remarks" name="remarks" value="{{$reservation->partnerTransactions->remarks or ''}}">
             </div>
         </div>
     </div>

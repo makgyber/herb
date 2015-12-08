@@ -15,15 +15,15 @@
                 </div>
             </div>
             <div class="form-group form-group-sm row col-sm-12">
-                <label for="pickupTime" class="col-sm-5 control-label">Pickup Time</label>
+                <label for="pickup_time" class="col-sm-5 control-label">Pickup Time</label>
                 <div class="col-sm-7">
-                    <input type="time" class="form-control" name="pickupTime" id="pickupTime" placeholder="Pickup Time" value="{{$reservation->pickup_time or ''}}">
+                    <input type="time" class="form-control" name="pickup_time" id="pickup_time" placeholder="Pickup Time" value="{{$reservation->pickup_time or ''}}">
                 </div>
             </div>
             <div class="form-group form-group-sm row col-sm-12">
-                <label for="pickupLocation" class="col-sm-5 control-label">Location</label>
+                <label for="pickup_location" class="col-sm-5 control-label">Location</label>
                 <div class="col-sm-7">
-                    <input type="text" class="form-control" name="pickupLocation" id="pickupLocation" placeholder="Location" value="{{$reservation->pickup_location or ''}}">
+                    <input type="text" class="form-control" name="pickup_location" id="pickup_location" placeholder="Location" value="{{$reservation->pickup_location or ''}}">
                 </div>
             </div>
             <div class="form-group form-group-sm row col-sm-12">
