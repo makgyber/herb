@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="165b3aa6-9b0c-4147-8db4-339cc2f35106" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Reservations/ReservationController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Reservations/ReservationController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/PartnerTransaction.php" afterPath="$PROJECT_DIR$/app/Models/PartnerTransaction.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Reservation.php" afterPath="$PROJECT_DIR$/app/Models/Reservation.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/partner_cardtypes.sql" afterPath="$PROJECT_DIR$/database/partner_cardtypes.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/reservations/deposit.blade.php" afterPath="$PROJECT_DIR$/resources/views/reservations/deposit.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/reservations/details.blade.php" afterPath="$PROJECT_DIR$/resources/views/reservations/details.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/reservations/guestinfo.blade.php" afterPath="$PROJECT_DIR$/resources/views/reservations/guestinfo.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/reservations/index.blade.php" afterPath="$PROJECT_DIR$/resources/views/reservations/index.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/reservations/particulars.blade.php" afterPath="$PROJECT_DIR$/resources/views/reservations/particulars.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/reservations/partnerinfo.blade.php" afterPath="$PROJECT_DIR$/resources/views/reservations/partnerinfo.blade.php" />
     </list>
     <ignored path="herb.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -90,11 +80,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="partnerinfo.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="partnerinfo.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/reservations/partnerinfo.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4778481">
-              <caret line="33" column="141" selection-start-line="33" selection-start-column="141" selection-end-line="33" selection-end-column="141" />
+            <state vertical-scroll-proportion="-22.583334">
+              <caret line="49" column="6" selection-start-line="49" selection-start-column="6" selection-end-line="49" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -132,11 +122,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="partner_cardtypes.sql" pinned="false" current-in-tab="false">
+      <file leaf-file-name="partner_cardtypes.sql" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/database/partner_cardtypes.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.037037">
-              <caret line="177" column="110" selection-start-line="177" selection-start-column="110" selection-end-line="177" selection-end-column="110" />
+            <state vertical-scroll-proportion="0.45182723">
+              <caret line="159" column="2" selection-start-line="159" selection-start-column="2" selection-end-line="159" selection-end-column="2" />
               <folding />
             </state>
           </provider>
@@ -206,9 +196,9 @@
         <option value="$PROJECT_DIR$/app/Models/Reservation.php" />
         <option value="$PROJECT_DIR$/resources/views/reservations/details.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Reservations/ReservationController.php" />
-        <option value="$PROJECT_DIR$/database/partner_cardtypes.sql" />
         <option value="$PROJECT_DIR$/app/Models/PartnerTransaction.php" />
         <option value="$PROJECT_DIR$/resources/views/reservations/partnerinfo.blade.php" />
+        <option value="$PROJECT_DIR$/database/partner_cardtypes.sql" />
       </list>
     </option>
   </component>
@@ -818,14 +808,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/reservations/particulars.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.875">
-          <caret line="19" column="94" selection-start-line="19" selection-start-column="94" selection-end-line="19" selection-end-column="94" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Models/Reservation.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-2.6470587">
@@ -882,14 +864,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/partner_cardtypes.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.037037">
-          <caret line="177" column="110" selection-start-line="177" selection-start-column="110" selection-end-line="177" selection-end-column="110" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Models/PartnerTransaction.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.8627453">
@@ -900,8 +874,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/reservations/partnerinfo.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4778481">
-          <caret line="33" column="141" selection-start-line="33" selection-start-column="141" selection-end-line="33" selection-end-column="141" />
+        <state vertical-scroll-proportion="-22.583334">
+          <caret line="49" column="6" selection-start-line="49" selection-start-column="6" selection-end-line="49" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/reservations/particulars.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.875">
+          <caret line="19" column="94" selection-start-line="19" selection-start-column="94" selection-end-line="19" selection-end-column="94" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/partner_cardtypes.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.45182723">
+          <caret line="159" column="2" selection-start-line="159" selection-start-column="2" selection-end-line="159" selection-end-column="2" />
           <folding />
         </state>
       </provider>
