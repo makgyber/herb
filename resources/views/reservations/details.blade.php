@@ -33,12 +33,13 @@
                         </div>
                         <table class="table">
                             <thead>
-                            <tr><th>#</th><th>Room</th><th>In</th><th>Out</th></tr>
+                            <tr><th>#</th><th>Room Type</th><th>Room</th><th>In</th><th>Out</th><th>Action</th></tr>
                             </thead>
                             <tbody>
                             @foreach($reservation->reserveRooms as $reserveRoom)
                                 <tr>
                                     <td><input type="checkbox" name="current_reserve_room" value="{{$reserveRoom->rr_id}}"></td>
+                                    <td>{{$reserveRoom->roomType->room_type_name}}</td>
                                     <td>{{$reserveRoom->room->door_name}}</td>
                                     <td>{{$reserveRoom->checkin}}</td>
                                     <td>{{$reserveRoom->checkout}}</td>
