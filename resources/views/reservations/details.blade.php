@@ -39,7 +39,7 @@
                             @foreach($reservation->reserveRooms as $reserveRoom)
                                 <tr>
                                     <td><input type="checkbox" name="current_reserve_room" value="{{$reserveRoom->rr_id}}"></td>
-                                    <td>{{$reserveRoom->room_id}}</td>
+                                    <td>{{$reserveRoom->room->door_name}}</td>
                                     <td>{{$reserveRoom->checkin}}</td>
                                     <td>{{$reserveRoom->checkout}}</td>
                                     <td>
