@@ -121,7 +121,7 @@
                         'room=' + $(this).data('roomid'),
                         'dep=' + $('#reserve_fee').val()
                     ];
-                    window.location.href='http://localhost/fds/ajax/checkinform.php?' + params.join('&');
+                    window.location.href='http://fds2.shogun/fds/ajax/checkinform.php?' + params.join('&');
                 } else if (act == 'checkinclose') {
                     var params = [
                         'close=1',
@@ -132,7 +132,7 @@
                         'room=' + $(this).data('roomid'),
                         'dep=' + $('#reserve_fee').val()
                     ];
-                    window.location.href='http://localhost/fds/ajax/checkinform.php?' + params.join('&');
+                    window.location.href='http://fds2.shogun/fds/ajax/checkinform.php?' + params.join('&');
                 } else if (act == 'rrdel') {
 
                 }

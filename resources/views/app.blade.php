@@ -19,6 +19,7 @@
     <link href="{{ asset('css/reservation.css') }}" rel="stylesheet">
     <script src="{{ asset('js/jquery-1.11.3.min.js') }}"></script>
     <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-touch-punch.min.js') }}"></script>
 </head>
 
 <body>

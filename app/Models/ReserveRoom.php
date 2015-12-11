@@ -36,4 +36,11 @@ class ReserveRoom extends Model
 	    
 	];
 
+	public function room() {
+		return $this->belongsTo('App\Models\Room', 'room_id', 'room_id');
+	}
+
+	public function roomType() {
+		return $this->belongsTo('App\Models\RoomTypes', 'room_type_id', 'room_type_id');
+	}
 }
