@@ -63,6 +63,7 @@ Route::group(['prefix' => 'reservations', 'namespace' => 'Reservations'], functi
 	Route::get('/', 'ReservationController@index');
 	Route::post('save', 'ReservationController@store');
 	Route::get('guest', 'ReservationController@guest');
+	Route::post('removeroom/{id}', 'ReservationController@removeRoom');
 
 });
 

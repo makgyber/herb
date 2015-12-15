@@ -202,4 +202,10 @@ class ReservationController extends Controller
         return response()->json($guest);
 
     }
+
+    public function removeRoom($id)
+    {
+        ReserveRoom::destroy($id);
+
+    }
 }

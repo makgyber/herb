@@ -134,7 +134,10 @@
                     ];
                     window.location.href='http://fds2.shogun/fds/ajax/checkinform.php?' + params.join('&');
                 } else if (act == 'rrdel') {
-
+                    var url = '{{url('reservations/removeroom')}}/' + $(this).data('rrid');
+                    $.post(url, {}, function(resp){
+                        document.location.href = '{{url('reservations')}}?reserve_code=' + $('#reserve_code').val();
+                    });
                 }
             });
         });
