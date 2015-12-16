@@ -179,3 +179,4 @@ ALTER TABLE `partner_transactions` ADD `discount` DECIMAL(10,2) NOT NULL DEFAULT
 ALTER TABLE `occupancy_log` CHANGE `update_by` `update_by` INT(11) NULL, CHANGE `remarks` `remarks` VARCHAR(200) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL, CHANGE `transaction_type` `transaction_type` VARCHAR(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL;
 ALTER TABLE `room_sales` CHANGE `remarks` `remarks` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL;
 ALTER TABLE `reserve_rooms` ADD `created_at` TIMESTAMP NOT NULL , ADD `updated_at` TIMESTAMP NOT NULL ;
+ALTER TABLE `temp_occupancy` ADD `discount_rate` DECIMAL(11,2) NOT NULL DEFAULT '0.00' ;
