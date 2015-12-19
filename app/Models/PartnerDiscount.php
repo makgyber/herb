@@ -32,4 +32,9 @@ class PartnerDiscount extends Model
 	    
 	];
 
+
+	public function partner() {
+		return $this->belongsTo('App\Models\Partner', 'partner_id', 'partner_id');
+	}
+
 }

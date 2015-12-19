@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Http\Requests\CreatePartnerDiscountRequest;
 use App\Http\Requests\UpdatePartnerDiscountRequest;
 use App\Libraries\Repositories\PartnerDiscountRepository;
+use App\Models\Partner;
 use Flash;
 use Mitul\Controller\AppBaseController as AppBaseController;
 use Response;
@@ -39,7 +40,8 @@ class PartnerDiscountController extends AppBaseController
 	 */
 	public function create()
 	{
-		return view('partnerDiscounts.create');
+		$partners = Partner::lists('partner_name', 'partner_id');
+		return view('partnerDiscounts.create', compact('partners'));
 	}
 
 	/**
@@ -91,6 +93,7 @@ class PartnerDiscountController extends AppBaseController
 	public function edit($id)
 	{
 		$partnerDiscount = $this->partnerDiscountRepository->find($id);
+		$partners = Partner::lists('partner_name', 'partner_id');
 
 		if(empty($partnerDiscount))
 		{
@@ -99,7 +102,7 @@ class PartnerDiscountController extends AppBaseController
 			return redirect(route('partnerDiscounts.index'));
 		}
 
-		return view('partnerDiscounts.edit')->with('partnerDiscount', $partnerDiscount);
+		return view('partnerDiscounts.edit')->with('partnerDiscount', $partnerDiscount)->with('partners', $partners);
 	}
 
 	/**

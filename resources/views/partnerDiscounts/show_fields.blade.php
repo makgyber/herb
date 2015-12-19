@@ -1,7 +1,7 @@
 <!-- Id Field -->
 <div class="form-group">
     {!! Form::label('id', 'Id:') !!}
-    <p>{!! $partnerDiscount->id !!}</p>
+    <p>{!! $partnerDiscount->partner->partner_name !!}</p>
 </div>
 
 <!-- Partner Id Field -->

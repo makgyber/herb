@@ -7,7 +7,7 @@
 <!-- Partner Id Field -->
 <div class="form-group col-sm-6 col-lg-4">
     {!! Form::label('partner_id', 'Partner Id:') !!}
-	{!! Form::number('partner_id', null, ['class' => 'form-control']) !!}
+    {!! Form::select('partner_id', $partners, null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Discount Field -->

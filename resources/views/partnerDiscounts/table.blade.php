@@ -12,7 +12,7 @@
     @foreach($partnerDiscounts as $partnerDiscount)
         <tr>
             <td>{!! $partnerDiscount->id !!}</td>
-			<td>{!! $partnerDiscount->partner_id !!}</td>
+			<td>{!! $partnerDiscount->partner->partner_name !!}</td>
 			<td>{!! $partnerDiscount->discount !!}</td>
 			<td>{!! $partnerDiscount->remarks !!}</td>
 			<td>{!! $partnerDiscount->created_at !!}</td>
