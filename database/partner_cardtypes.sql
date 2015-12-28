@@ -180,3 +180,8 @@ ALTER TABLE `occupancy_log` CHANGE `update_by` `update_by` INT(11) NULL, CHANGE 
 ALTER TABLE `room_sales` CHANGE `remarks` `remarks` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL;
 ALTER TABLE `reserve_rooms` ADD `created_at` TIMESTAMP NOT NULL , ADD `updated_at` TIMESTAMP NOT NULL ;
 ALTER TABLE `temp_occupancy` ADD `discount_rate` DECIMAL(11,2) NOT NULL DEFAULT '0.00' ;
+
+DROP TABLE `creditline_transactions`;
+DROP TABLE `creditline_posts`;
+DROP TABLE `creditline_post_summary`;
+DROP TABLE `creditline_temp_posts`;
